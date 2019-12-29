@@ -1,0 +1,111 @@
+BITS 32
+ALIGN 4
+
+
+mboot:
+	; Multiboot headers:
+	;   Page aligned loading, please
+	MULTIBOOT_PAGE_ALIGN	equ 1<<0
+	;   We require memory information
+	MULTIBOOT_MEMORY_INFO	equ 1<<1
+	;   We would really, really like graphics...
+;	MULTIBOOT_USE_GFX		equ 1<<2
+	;   We are multiboot compatible!
+	MULTIBOOT_HEADER_MAGIC	equ 0x1BADB002
+	;   Load up those flags.
+	MULTIBOOT_HEADER_FLAGS	equ MULTIBOOT_PAGE_ALIGN | MULTIBOOT_MEMORY_INFO ;| MULTIBOOT_USE_GFX
+	;   Checksum the result
+	MULTIBOOT_CHECKSUM		equ -(MULTIBOOT_HEADER_MAGIC + MULTIBOOT_HEADER_FLAGS)
+	; Load the headers into the binary image.
+	dd MULTIBOOT_HEADER_MAGIC
+	dd MULTIBOOT_HEADER_FLAGS
+	dd MULTIBOOT_CHECKSUM
+	dd 0x00000000 ; header_addr
+	dd 0x00000000 ; load_addr
+	dd 0x00000000 ; load_end_addr
+	dd 0x00000000 ; bss_end_addr
+	dd 0x00000000 ; entry_addr
+	; Graphics requests
+	dd 0x00000000 ; 0 = linear graphics
+	dd 800
+	dd 600
+	dd 32         ; Set me to 32 or else.
+
+
+
+; Some external references.
+extern code, bss, end
+
+; Main entrypoint
+global start
+start:
+	; Set up stack pointer.
+	mov esp, 0x7FFFF
+	push esp
+	; Push the incoming mulitboot headers
+	push eax ; Header magic
+	push ebx ; Header pointer
+	; Disable interrupts
+	cli
+	; Call the C entry
+	extern	kmain
+	call	kmain
+	jmp		$
+
+
+; Global Descriptor Table
+global gdt_flush
+extern gdtPtr
+gdt_flush:
+	; Load the GDT
+	lgdt [gdtPtr]
+	; Flush the values to 0x10
+	mov ax, 0x10
+	mov ds, ax
+	mov es, ax
+	mov fs, ax
+	mov gs, ax
+	mov ss, ax
+	jmp 0x08:flush2
+flush2:
+	ret
+
+global read_eip
+read_eip: ; Clever girl
+	pop eax
+	jmp eax
+
+global copy_page_physical
+copy_page_physical:
+    push ebx
+    pushf
+    cli
+    mov ebx, [esp+12]
+    mov ecx, [esp+16]
+    mov edx, cr0
+    and edx, 0x7FFFFFFF
+    mov cr0, edx
+    mov edx, 0x400
+.page_loop:
+    mov eax, [ebx]
+    mov [ecx], eax
+    add ebx, 4
+    add ecx, 4
+    dec edx
+    jnz .page_loop
+    mov edx, cr0
+    or  edx, 0x80000000
+    mov cr0, edx
+    popf
+    pop ebx
+    ret
+
+global tss_flush
+tss_flush:
+	mov ax, 0x2B
+	ltr ax
+	ret
+
+; BSS Section
+SECTION .bss
+	resb 8192 ; 8KB of memory reserved
