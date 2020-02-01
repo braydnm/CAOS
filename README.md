@@ -31,4 +31,3 @@ The initialization process is as follows:
  - Improve memory management
  - Add syscalls/tasking/gnu library for executables
  - Add a gui (this might be a problem)
- - Write a better memory manager instead of using liballoc plugged in

@@ -178,9 +178,15 @@ inline uint8_t ClrBit(uint8_t word, uint8_t mask) {
 }
 
 //! Assigns the bit defined in mask to a value
+#ifdef __cplusplus
+inline uint8_t AssignBit(uint8_t word, uint8_t mask, bool value) {
+	return value ? SetBit(word, mask) : ClrBit(word, mask);
+}
+#else
 inline uint8_t AssignBit(uint8_t word, uint8_t mask, _Bool value) {
 	return value ? SetBit(word, mask) : ClrBit(word, mask);
 }
+#endif
 
 
 

@@ -73,7 +73,7 @@ uintptr_t mm_alloc_pages(int n) {
             kprintf("first_n_frames is broken\n");
             while (true);
         }
-        alloc_dma_frame(get_page(i, 1, kernel_dir), 1, 0, i);
+        make_dma_frame(get_page(i, 1, kernel_dir), 1, 0, i);
     }
 
     return addr;

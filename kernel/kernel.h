@@ -4,6 +4,15 @@
 
 #ifndef OS_KERNEL_H
 #define OS_KERNEL_H
+#ifdef __cplusplus
+#define EXTERN_C extern "C" {
+#define EXTERN_C_END }
+#else
+#define EXTERN_C
+#define EXTERN_C_END
+#endif
+
+EXTERN_C
 #ifndef NULL
     #define NULL 0
 #endif
@@ -70,5 +79,7 @@ void handleCtrlPress(char input);
 
 extern void __assert_func(const char * file, int line, const char * func, const char * failedexpr);
 #define assert(statement) ((statement) ? (void)0 : __assert_func(__FILE__, __LINE__, __FUNCTION__, #statement))
+
+EXTERN_C_END
 
 #endif //OS_KERNEL_H

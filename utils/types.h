@@ -16,7 +16,9 @@
 #endif
 
 #ifndef bool
+#ifndef __cplusplus
 typedef _Bool bool;
+#endif
 #endif
 
 #ifndef UCHAR_MAX

@@ -54,8 +54,7 @@ void alloc_frame(page_t *p, int k, int w) {
     return;
 }
 
-void alloc_dma_frame(page_t *p, int k, int w, uintptr_t a) {
-    /* DMA is a nasty pig, leave it as it is */
+void make_dma_frame(page_t *p, int k, int w, uintptr_t a) {
     p->present = 1;
     p->rw = (w)?1:0;
     p->user = (k)?0:1;

@@ -13,7 +13,7 @@ extern void mark_region(uint64_t addt);
 
 extern uintptr_t virtual_to_physical(uintptr_t p);
 
-extern void alloc_dma_frame(page_t *, int, int, uintptr_t);
+extern void make_dma_frame(page_t *, int, int, uintptr_t);
 extern void free_frame(page_t *);
 
 extern void heap_install(void);
