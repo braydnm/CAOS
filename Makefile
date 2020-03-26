@@ -16,13 +16,17 @@ COMMAND_MODULE_OBJ = $(patsubst %.c, ${OUTPUT_DIR}/%.cmd, ${COMMAND_MODULE_SOURC
 AS_OBJ = ${OUTPUT_DIR}/signalHandling/interruptAccept.o ${OUTPUT_DIR}/kernel/boot.o
 
 # Change this if your cross-compiler is somewhere else
-CC = gcc -m32 -fno-pie -march=i686
-NM = i686-elf-nm
+# export PATH := $(shell pwd)/toolchain/bin:$(PATH)
+
+CC = toolchain/bin/i386-elf-gcc
+NM = toolchain/bin/i386-elf-nm
+AS = toolchain/bin/i386-elf-as
+LD = toolchain/bin/i386-elf-ld
 # -g: Use debugging symbols in gcc
 CFLAGS = -finline-functions -fno-stack-protector -nostdinc -ffreestanding -g
 
 #KCFLAGS  = -std=c99
-KCFLAGS += -finline-functions -ffreestanding -fno-stack-protector
+KCFLAGS += -finline-functions -ffreestanding -fno-stack-protector -fno-pie
 KCFLAGS += -Wall -Wextra -Wno-unused-function -Wno-unused-parameter -Wno-format
 KCFLAGS += -pedantic -fno-omit-frame-pointer
 KCFLAGS += -D_KERNEL_
@@ -31,8 +35,15 @@ KASFLAGS = --32
 
 current_dir = $(shell pwd)
 
+UNAME_S := $(shell uname -s)
+    ifeq ($(UNAME_S), Darwin)
+        MOUNT_COMMAND = sudo fuse-ext2 -o force
+	else
+		MOUNT_COMMAND = sudo mount
+    endif
+
 image: ${COMMAND_MODULE_OBJ} ${KERNEL_MODULE_OBJ} CAOS
-	sudo mount ramdisk.img ${current_dir}/mnt/
+	${MOUNT_COMMAND} ramdisk.img ${current_dir}/mnt/
 	sudo cp build/modules/*.ko ${current_dir}/mnt/modules/
 	sudo cp build/cmdModules/*.cmd ${current_dir}/mnt/commands/
 	sudo umount ${current_dir}/mnt/
@@ -51,21 +62,22 @@ ${OUTPUT_DIR}/cmdModules/%.cmd: cmdModules/%.c
 	./cmdModules/make.sh $< $@
 
 CAOS: ${AS_OBJ} ${OBJ} build/kernel/symbols.o
-	gcc -m32 -march=i686 -T kernel/linker.ld ${KCFLAGS} -g -nostdlib -o $@ ${AS_OBJ} ${OBJ} build/kernel/symbols.o
+	${CC} -T kernel/linker.ld ${KCFLAGS} -g -nostdlib -o $@ ${AS_OBJ} ${OBJ} build/kernel/symbols.o
 	#ld -T kernel/linker.ld -melf_i386 -o $@ $^
 
 build/kernel/symbols.o: ${AS_OBJ} ${OBJ} genSymbols.py
-	-rm -f kernel/symbols.o
-	gcc -m32 -T kernel/linker.ld ${KCFLAGS} -nostdlib -o CAOS ${AS_OBJ} ${OBJ}
+	rm -f kernel/symbols.o
+	${CC} -m32 -T kernel/linker.ld ${KCFLAGS} -nostdlib -o CAOS ${AS_OBJ} ${OBJ}
 	${NM} CAOS -g | python genSymbols.py > kernel/symbols.S
-	as --32 kernel/symbols.S -o $@
-	-rm -f CAOS
+	${AS} kernel/symbols.S -o $@
+	rm -f CAOS
 
 # Generic rules for wildcards
 # To make an object, always compile from its .c
 $(OUTPUT_DIR)/%.o: %.c ${HEADERS}
 	mkdir -p $(@D)
-	gcc -m32 ${KCFLAGS} -nostdlib -g -c -o $@ $<
+	echo $(PATH)
+	${CC} ${KCFLAGS} -nostdlib -g -c -o $@ $<
 
 $(OUTPUT_DIR)/%.o: %.asm
 	mkdir -p $(@D)
@@ -73,7 +85,7 @@ $(OUTPUT_DIR)/%.o: %.asm
 
 $(OUTPUT_DIR)/%.o: %.s
 	mkdir -p $(@D)
-	as --32 $< -o $@
+	${AS} --32 $< -o $@
 	#yasm $< -f elf32 -o $@
 
 $(OUTPUT_DIR)/%.o: %.yasm

@@ -115,17 +115,17 @@ void paging_fini()
     get_page(0, 1, kernel_dir)->present = 0;
     set_frame(0);
     for (uintptr_t i = 0x1000; i < 0x80000; i += 0x1000) {
-        alloc_dma_frame(get_page(i, 1, kernel_dir), 1, 0, i);
+        make_dma_frame(get_page(i, 1, kernel_dir), 1, 0, i);
     }
     for (uintptr_t i = 0x80000; i < 0x100000; i += 0x1000) {
-        alloc_dma_frame(get_page(i, 1, kernel_dir), 1, 0, i);
+        make_dma_frame(get_page(i, 1, kernel_dir), 1, 0, i);
     }
     for (uintptr_t i = 0x100000; i < plp + 0x3000; i += 0x1000) {
-        alloc_dma_frame(get_page(i, 1, kernel_dir), 1, 0, i);
+        make_dma_frame(get_page(i, 1, kernel_dir), 1, 0, i);
     }
     /* vga */
     for (uintptr_t i = 0xB8000; i < 0xC0000; i += 0x1000) {
-        alloc_dma_frame(get_page(i, 0, kernel_dir), 0, 1, i);
+        make_dma_frame(get_page(i, 0, kernel_dir), 0, 1, i);
     }
     kernel_dir->phy_addr = (uintptr_t)kernel_dir->phy_tables;
 

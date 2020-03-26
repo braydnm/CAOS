@@ -18,18 +18,6 @@
 .extern __print_used_mem
 .type __print_used_mem, @function
 
-.extern __x86.get_pc_thunk.ax
-.type __x86.get_pc_thunk.ax, @function
-
-.extern __x86.get_pc_thunk.bx
-.type __x86.get_pc_thunk.bx, @function
-
-.extern __x86.get_pc_thunk.cx
-.type __x86.get_pc_thunk.cx, @function
-
-.extern __x86.get_pc_thunk.dx
-.type __x86.get_pc_thunk.dx, @function
-
 .extern _itoa
 .type _itoa, @function
 
@@ -53,9 +41,6 @@
 
 .extern addInterruptHandler
 .type addInterruptHandler, @function
-
-.extern alloc_dma_frame
-.type alloc_dma_frame, @function
 
 .extern alloc_frame
 .type alloc_frame, @function
@@ -696,6 +681,9 @@
 .extern list_remove
 .type list_remove, @function
 
+.extern make_dma_frame
+.type make_dma_frame, @function
+
 .extern make_pipe
 .type make_pipe, @function
 
@@ -1236,18 +1224,6 @@ kernel_symbols_start:
 .long __print_used_mem
 .asciz "__print_used_mem"
 
-.long __x86.get_pc_thunk.ax
-.asciz "__x86.get_pc_thunk.ax"
-
-.long __x86.get_pc_thunk.bx
-.asciz "__x86.get_pc_thunk.bx"
-
-.long __x86.get_pc_thunk.cx
-.asciz "__x86.get_pc_thunk.cx"
-
-.long __x86.get_pc_thunk.dx
-.asciz "__x86.get_pc_thunk.dx"
-
 .long _itoa
 .asciz "_itoa"
 
@@ -1271,9 +1247,6 @@ kernel_symbols_start:
 
 .long addInterruptHandler
 .asciz "addInterruptHandler"
-
-.long alloc_dma_frame
-.asciz "alloc_dma_frame"
 
 .long alloc_frame
 .asciz "alloc_frame"
@@ -1913,6 +1886,9 @@ kernel_symbols_start:
 
 .long list_remove
 .asciz "list_remove"
+
+.long make_dma_frame
+.asciz "make_dma_frame"
 
 .long make_pipe
 .asciz "make_pipe"
