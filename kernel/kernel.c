@@ -57,7 +57,7 @@ void install_modules(char* path, char* ending){
     while ((ent = readdir_fs(modsFolder, index++))){
         if (endswith(ent->name, ending)){
             char* fileName = kmalloc(strlen(path)+2+strlen(ent->name)+1);
-            snprintf(fileName, "/%s/%s",path, ent->name);
+            snprintf(fileName, "%s/%s",path, ent->name);
             module_load(fileName);
         }
     }

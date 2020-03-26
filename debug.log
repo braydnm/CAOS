@@ -1,7 +1,7 @@
 [*] There is 1 module starting at 0x0001009c.
-[*] Current kernel heap start point would be 0x0011b31c.
-[*] Module 0 is at 0x0014e000:0x00242240
-[*] Moving kernel heap start to 0x00242240
+[*] Current kernel heap start point would be 0x001182f8.
+[*] Module 0 is at 0x0014b000:0x0023f240
+[*] Moving kernel heap start to 0x0023f240
 [*] Mounting ramdisk at /dev/ram0
 [*] Searching for dev
 [x] Did not find dev, making it.
@@ -20,15 +20,15 @@
 [*] Path: , Depth: 0
 [*] Got mount point
 [*]... Searching for modules
-[*]file a/m/c times are 001541359088/001541359087/001541359087
+[*]file a/m/c times are 001585248261/001541359087/001541359087
 [*] Path canonicalized is /modules/ata.ko
 [*] Path: , Depth: 0
 [*] Got mount point
 [*]... Searching for modules
-[*]file a/m/c times are 001541359088/001541359087/001541359087
+[*]file a/m/c times are 001585248261/001541359087/001541359087
 [*]... Searching for ata.ko
-[*]file a/m/c times are 001540835990/001542903447/001542903447
-Attempting to load kernel module: //modules/ata.ko
+[*]file a/m/c times are 001585248614/001579204272/001585248614
+Attempting to load kernel module: /modules/ata.ko
 Checking dependencies.
 Loading sections.
 Not resolving bootInfo
@@ -58,10 +58,10 @@ Finished loading module ata
 [*] Path: , Depth: 0
 [*] Got mount point
 [*]... Searching for modules
-[*]file a/m/c times are 001541359088/001541359087/001541359087
+[*]file a/m/c times are 001585248261/001541359087/001541359087
 [*]... Searching for dospart.ko
-[*]file a/m/c times are 001540835990/001542903447/001542903447
-Attempting to load kernel module: //modules/dospart.ko
+[*]file a/m/c times are 001585248614/001579204272/001585248614
+Attempting to load kernel module: /modules/dospart.ko
 Checking dependencies.
 Loading sections.
 Not resolving bootInfo
@@ -93,7 +93,7 @@ Locating module information...
 [*] Got mount point
 [*]... Searching for hdb
 [x] Node passed to finddir_fs isn't a directory!
-[x] node = 0x0080aaa0, name = hdb
+[x] node = 0x0080a520, name = hdb
 Finished loading module partition
 [*] Node refcount [dospart.ko] is now 0: 0
 [x] Tried to read an invalid block. Asked for 1 (0-indexed), but inode only has 1!
@@ -101,15 +101,15 @@ Finished loading module partition
 [*] Path: , Depth: 0
 [*] Got mount point
 [*]... Searching for commands
-[*]file a/m/c times are 001541359099/001541368628/001541368628
+[*]file a/m/c times are 001585248261/001541368628/001541368628
 [*] Path canonicalized is /commands/echo.cmd
 [*] Path: , Depth: 0
 [*] Got mount point
 [*]... Searching for commands
-[*]file a/m/c times are 001541359099/001541368628/001541368628
+[*]file a/m/c times are 001585248261/001541368628/001541368628
 [*]... Searching for echo.cmd
-[*]file a/m/c times are 001541359315/001542903447/001542903447
-Attempting to load kernel module: //commands/echo.cmd
+[*]file a/m/c times are 001585248614/001579204272/001585248614
+Attempting to load kernel module: /commands/echo.cmd
 Checking dependencies.
 Loading sections.
 Not resolving bootInfo
@@ -131,10 +131,10 @@ Finished loading module echo
 [*] Path: , Depth: 0
 [*] Got mount point
 [*]... Searching for commands
-[*]file a/m/c times are 001541359099/001541368628/001541368628
+[*]file a/m/c times are 001585248261/001541368628/001541368628
 [*]... Searching for help.cmd
-[*]file a/m/c times are 001541359531/001542903447/001542903447
-Attempting to load kernel module: //commands/help.cmd
+[*]file a/m/c times are 001585248614/001579204272/001585248614
+Attempting to load kernel module: /commands/help.cmd
 Checking dependencies.
 Loading sections.
 Not resolving inputHandlers
@@ -156,10 +156,10 @@ Finished loading module help
 [*] Path: , Depth: 0
 [*] Got mount point
 [*]... Searching for commands
-[*]file a/m/c times are 001541359099/001541368628/001541368628
+[*]file a/m/c times are 001585248261/001541368628/001541368628
 [*]... Searching for clear.cmd
-[*]file a/m/c times are 001541365768/001542903447/001542903447
-Attempting to load kernel module: //commands/clear.cmd
+[*]file a/m/c times are 001585248614/001579204272/001585248614
+Attempting to load kernel module: /commands/clear.cmd
 Checking dependencies.
 Loading sections.
 Not resolving bootInfo
@@ -181,10 +181,10 @@ Finished loading module clear
 [*] Path: , Depth: 0
 [*] Got mount point
 [*]... Searching for commands
-[*]file a/m/c times are 001541359099/001541368628/001541368628
+[*]file a/m/c times are 001585248261/001541368628/001541368628
 [*]... Searching for ls.cmd
-[*]file a/m/c times are 001541366829/001542903447/001542903447
-Attempting to load kernel module: //commands/ls.cmd
+[*]file a/m/c times are 001585248614/001579204272/001585248614
+Attempting to load kernel module: /commands/ls.cmd
 Checking dependencies.
 Loading sections.
 Not resolving cwd
@@ -206,10 +206,10 @@ Finished loading module ls
 [*] Path: , Depth: 0
 [*] Got mount point
 [*]... Searching for commands
-[*]file a/m/c times are 001541359099/001541368628/001541368628
+[*]file a/m/c times are 001585248261/001541368628/001541368628
 [*]... Searching for read.cmd
-[*]file a/m/c times are 001541366829/001542903447/001542903447
-Attempting to load kernel module: //commands/read.cmd
+[*]file a/m/c times are 001585248614/001579204272/001585248614
+Attempting to load kernel module: /commands/read.cmd
 Checking dependencies.
 Loading sections.
 Not resolving bootInfo
@@ -231,10 +231,10 @@ Finished loading module read
 [*] Path: , Depth: 0
 [*] Got mount point
 [*]... Searching for commands
-[*]file a/m/c times are 001541359099/001541368628/001541368628
+[*]file a/m/c times are 001585248261/001541368628/001541368628
 [*]... Searching for reboot.cmd
-[*]file a/m/c times are 001541366829/001542903447/001542903447
-Attempting to load kernel module: //commands/reboot.cmd
+[*]file a/m/c times are 001585248614/001579204272/001585248614
+Attempting to load kernel module: /commands/reboot.cmd
 Checking dependencies.
 Loading sections.
 Not resolving bootInfo
@@ -256,10 +256,10 @@ Finished loading module reboot
 [*] Path: , Depth: 0
 [*] Got mount point
 [*]... Searching for commands
-[*]file a/m/c times are 001541359099/001541368628/001541368628
+[*]file a/m/c times are 001585248261/001541368628/001541368628
 [*]... Searching for write.cmd
-[*]file a/m/c times are 001541368628/001542903447/001542903447
-Attempting to load kernel module: //commands/write.cmd
+[*]file a/m/c times are 001585248614/001579204272/001585248614
+Attempting to load kernel module: /commands/write.cmd
 Checking dependencies.
 Loading sections.
 Not resolving bootInfo
@@ -286,21 +286,6 @@ Finished loading module write
 [*]Log block size = 0 -> 1024
 [*]bgd_block_span = 1
 [x] Path / already mounted, unmount before trying to mount something else.
-[*] Mounted ext2[/dev/hda0] to /: 0x01262570
+[*] Mounted ext2[/dev/hda0] to /: 0x01239570
 [*] Path canonicalized is /
 [x] Tried to read an invalid block. Asked for 1 (0-indexed), but inode only has 1!
-[*] Path canonicalized is /test.txt
-[*] Path: , Depth: 0
-[*] Got mount point
-[*]... Searching for test.txt
-[*]file a/m/c times are 1321012800/1321012800/1321012800
-[x] Tried to read an invalid block. Asked for 0 (0-indexed), but inode only has 0!
-[x] Attempting to write beyond the existing allocated blocks for this inode.
-[x] Inode 12, Block 0
-[x] clearing and allocating up to required blocks (block=0, 0)
-[*] Allocating block #0 for inode #12
-[x] allocating block #521 (group 0)
-[*] Setting inode->blocks to 2 = (1 fs blocks)
-[x] ... done
-[x] Writing virtual block 0 for inode 12 maps to real block 521
-[*] Path canonicalized is /
