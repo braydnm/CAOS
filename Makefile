@@ -13,7 +13,7 @@ KERNEL_MODULE_OBJ = $(patsubst %.c, ${OUTPUT_DIR}/%.ko, ${KERNEL_MODULE_SOURCES}
 COMMAND_MODULE_SOURCES = $(shell find cmdModules/ -type f -name "*.c")
 COMMAND_MODULE_OBJ = $(patsubst %.c, ${OUTPUT_DIR}/%.cmd, ${COMMAND_MODULE_SOURCES})
 
-AS_OBJ = ${OUTPUT_DIR}/signalHandling/interruptAccept.o ${OUTPUT_DIR}/kernel/boot.o
+AS_OBJ = ${OUTPUT_DIR}/kernel/signalHandling/interruptAccept.o ${OUTPUT_DIR}/kernel/boot.o
 
 # Change this if your cross-compiler is somewhere else
 # export PATH := $(shell pwd)/toolchain/bin:$(PATH)
@@ -31,6 +31,7 @@ KCFLAGS += -Wall -Wextra -Wno-unused-function -Wno-unused-parameter -Wno-format
 KCFLAGS += -pedantic -fno-omit-frame-pointer
 KCFLAGS += -D_KERNEL_
 KCFLAGS += -DKERNEL_GIT_TAG=$(shell util/make-version)
+KCFLAGS += -Ikernel/include
 KASFLAGS = --32
 
 current_dir = $(shell pwd)
@@ -43,13 +44,13 @@ UNAME_S := $(shell uname -s)
     endif
 
 image: ${COMMAND_MODULE_OBJ} ${KERNEL_MODULE_OBJ} CAOS
-	${MOUNT_COMMAND} ramdisk.img ${current_dir}/mnt/
-	sudo cp build/modules/*.ko ${current_dir}/mnt/modules/
-	sudo cp build/cmdModules/*.cmd ${current_dir}/mnt/commands/
-	sudo umount ${current_dir}/mnt/
+	${MOUNT_COMMAND} ramdisk.img ${current_dir}/build/mnt/
+	sudo cp build/modules/*.ko ${current_dir}/build/mnt/modules/
+	sudo cp build/cmdModules/*.cmd ${current_dir}/build/mnt/commands/
+	sudo umount ${current_dir}/build/mnt/
 	./mountDisk.sh
-	sudo cp CAOS ${current_dir}/mnt/boot
-	sudo cp ramdisk.img ${current_dir}/mnt/boot
+	sudo cp CAOS ${current_dir}/build/mnt/boot
+	sudo cp ramdisk.img ${current_dir}/build/mnt/boot
 	./unmountDiskImage.sh
 	rm CAOS
 

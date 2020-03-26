@@ -1,4 +1,4 @@
-#include "../kernel/kernel.h"
+#include <kernel.h>
 
 static void reboot(list_t* args){
     outportb(0x64, 0xFE);

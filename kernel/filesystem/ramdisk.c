@@ -1,4 +1,4 @@
-#include "../kernel.h"
+#include <kernel.h>
 
 static uint32_t read_ramdisk(fs_node_t *node, uint32_t offset, uint32_t size, uint8_t *buffer);
 static uint32_t write_ramdisk(fs_node_t *node, uint32_t offset, uint32_t size, uint8_t *buffer);

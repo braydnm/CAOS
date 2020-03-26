@@ -1,4 +1,4 @@
-#include "../kernel.h"
+#include <kernel.h>
 
 
 #define MAX_SYMLINK_DEPTH 8

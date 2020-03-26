@@ -1,4 +1,4 @@
-#include "../kernel/kernel.h"
+#include <kernel.h>
 
 static void ls(list_t* args){
     fs_node_t* dir = kopen(args->length>=2?list_get(args, 1)->value:"", NULL);

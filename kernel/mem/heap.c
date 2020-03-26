@@ -1,4 +1,4 @@
-#include "../kernel.h"
+#include <kernel.h>
 
 #define VERSION 	"1.1"
 #define ALIGNMENT	16ul//4ul				///< This is the byte alignment that memory must be allocated on. IMPORTANT for GTK and other stuff.
@@ -855,4 +855,32 @@ void* realloc(void *p, size_t size) {
     liballoc_memcpy( ptr, p, real_size );
     free( p );
     return ptr;
+}
+
+void* memcpy(char* dest, char* source, size_t size){
+    for (int counter = 0; counter<size; counter++)
+        *(dest+counter) = *(source+counter);
+    return (dest);
+}
+
+void* memset(void* dest, int val, size_t size){
+    uint8_t * temp = (uint8_t *)dest;
+    do{ *temp++=val;} while (size--);
+    return (dest);
+}
+
+void* memmove(void* destAddr, const void* sourceAddr, size_t size){
+    char* dest = destAddr;
+    const char* source = sourceAddr;
+
+    // move from low mem to high mem
+    if (source<dest)
+        // copy from end to start
+        for (source+=size, dest+=size; size; size--)
+            *--dest = *--source;
+
+    else if (source!=dest)
+        for (; size; size--)
+            *dest++ = *source++;
+    return destAddr;
 }

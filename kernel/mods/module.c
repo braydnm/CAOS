@@ -1,6 +1,6 @@
-#include "../kernel.h"
-#include "../exec/elf.h"
-#include "module.h"
+#include <kernel.h>
+#include <exec/elf.h>
+#include <mods/module.h>
 
 #define SYMBOLTABLE_HASHMAP_SIZE 10
 #define MODULE_HASHMAP_SIZE 10

@@ -1,4 +1,4 @@
-#include "../kernel/kernel.h"
+#include <kernel.h>
 
 static void readFile(list_t* args){
     if (args->length<2)

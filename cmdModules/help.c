@@ -1,5 +1,5 @@
-#include "../kernel/kernel.h"
-#include "../utils/inputHandler.h"
+#include <kernel.h>
+#include <utils/inputHandler.h>
 
 static void help(){
     list_t* commands = hashmap_keys(inputHandlers);

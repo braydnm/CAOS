@@ -1,5 +1,5 @@
-#include "../kernel/kernel.h"
-#include "../utils/list.h"
+#include <kernel.h>
+#include <utils/list.h>
 
 static void clear(list_t* args){
     if (args->length>1)

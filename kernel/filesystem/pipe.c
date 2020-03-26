@@ -1,4 +1,4 @@
-#include "../kernel.h"
+#include <kernel.h>
 
 #define DEBUG_PIPES 0
 

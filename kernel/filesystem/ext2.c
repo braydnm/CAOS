@@ -1,4 +1,4 @@
-#include "../kernel.h"
+#include <kernel.h>
 
 
 #define EXT2_BGD_BLOCK 2

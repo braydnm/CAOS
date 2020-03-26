@@ -1,8 +1,8 @@
-#include "kernel.h"
-#include "../utils/types.h"
-#include "../utils/multiboot.h"
-#include "../utils/list.h"
-#include "../utils/inputHandler.h"
+#include <kernel.h>
+#include <utils/types.h>
+#include <utils/multiboot.h>
+#include <utils/list.h>
+#include <utils/inputHandler.h>
 
 uintptr_t initial_esp = 0;
 fs_node_t * ramdisk_mount(uintptr_t, size_t);

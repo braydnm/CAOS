@@ -1,4 +1,4 @@
-#include "../kernel/kernel.h"
+#include <kernel.h>
 #include "ata.h"
 
 static char ata_drive_char = 'a';

@@ -1,4 +1,4 @@
-#include "../kernel.h"
+#include <kernel.h>
 
 extern page_dir_t *kernel_dir;
 extern uintptr_t plp;

@@ -1,4 +1,4 @@
-#include "../kernel.h"
+#include <kernel.h>
 
 uintptr_t plp = (uintptr_t)&kernel_end;
 

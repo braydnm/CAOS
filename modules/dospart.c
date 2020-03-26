@@ -1,4 +1,4 @@
-#include "../kernel/kernel.h"
+#include <kernel.h>
 #include "ata.h"
 
 #define SECTOR_SIZE 512

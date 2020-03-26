@@ -1,7 +1,7 @@
 [*] There is 1 module starting at 0x0001009c.
-[*] Current kernel heap start point would be 0x001182f8.
-[*] Module 0 is at 0x0014b000:0x0023f240
-[*] Moving kernel heap start to 0x0023f240
+[*] Current kernel heap start point would be 0x00118318.
+[*] Module 0 is at 0x0014a000:0x0023e240
+[*] Moving kernel heap start to 0x0023e240
 [*] Mounting ramdisk at /dev/ram0
 [*] Searching for dev
 [x] Did not find dev, making it.
@@ -27,7 +27,7 @@
 [*]... Searching for modules
 [*]file a/m/c times are 001585248261/001541359087/001541359087
 [*]... Searching for ata.ko
-[*]file a/m/c times are 001585248614/001579204272/001585248614
+[*]file a/m/c times are 001585262294/001579204272/001585262294
 Attempting to load kernel module: /modules/ata.ko
 Checking dependencies.
 Loading sections.
@@ -60,7 +60,7 @@ Finished loading module ata
 [*]... Searching for modules
 [*]file a/m/c times are 001585248261/001541359087/001541359087
 [*]... Searching for dospart.ko
-[*]file a/m/c times are 001585248614/001579204272/001585248614
+[*]file a/m/c times are 001585262294/001579204272/001585262294
 Attempting to load kernel module: /modules/dospart.ko
 Checking dependencies.
 Loading sections.
@@ -108,7 +108,7 @@ Finished loading module partition
 [*]... Searching for commands
 [*]file a/m/c times are 001585248261/001541368628/001541368628
 [*]... Searching for echo.cmd
-[*]file a/m/c times are 001585248614/001579204272/001585248614
+[*]file a/m/c times are 001585262294/001579204272/001585262294
 Attempting to load kernel module: /commands/echo.cmd
 Checking dependencies.
 Loading sections.
@@ -133,7 +133,7 @@ Finished loading module echo
 [*]... Searching for commands
 [*]file a/m/c times are 001585248261/001541368628/001541368628
 [*]... Searching for help.cmd
-[*]file a/m/c times are 001585248614/001579204272/001585248614
+[*]file a/m/c times are 001585262294/001579204272/001585262294
 Attempting to load kernel module: /commands/help.cmd
 Checking dependencies.
 Loading sections.
@@ -158,7 +158,7 @@ Finished loading module help
 [*]... Searching for commands
 [*]file a/m/c times are 001585248261/001541368628/001541368628
 [*]... Searching for clear.cmd
-[*]file a/m/c times are 001585248614/001579204272/001585248614
+[*]file a/m/c times are 001585262294/001579204272/001585262294
 Attempting to load kernel module: /commands/clear.cmd
 Checking dependencies.
 Loading sections.
@@ -183,7 +183,7 @@ Finished loading module clear
 [*]... Searching for commands
 [*]file a/m/c times are 001585248261/001541368628/001541368628
 [*]... Searching for ls.cmd
-[*]file a/m/c times are 001585248614/001579204272/001585248614
+[*]file a/m/c times are 001585262294/001579204272/001585262294
 Attempting to load kernel module: /commands/ls.cmd
 Checking dependencies.
 Loading sections.
@@ -208,7 +208,7 @@ Finished loading module ls
 [*]... Searching for commands
 [*]file a/m/c times are 001585248261/001541368628/001541368628
 [*]... Searching for read.cmd
-[*]file a/m/c times are 001585248614/001579204272/001585248614
+[*]file a/m/c times are 001585262294/001579204272/001585262294
 Attempting to load kernel module: /commands/read.cmd
 Checking dependencies.
 Loading sections.
@@ -233,7 +233,7 @@ Finished loading module read
 [*]... Searching for commands
 [*]file a/m/c times are 001585248261/001541368628/001541368628
 [*]... Searching for reboot.cmd
-[*]file a/m/c times are 001585248614/001579204272/001585248614
+[*]file a/m/c times are 001585262294/001579204272/001585262294
 Attempting to load kernel module: /commands/reboot.cmd
 Checking dependencies.
 Loading sections.
@@ -258,7 +258,7 @@ Finished loading module reboot
 [*]... Searching for commands
 [*]file a/m/c times are 001585248261/001541368628/001541368628
 [*]... Searching for write.cmd
-[*]file a/m/c times are 001585248614/001579204272/001585248614
+[*]file a/m/c times are 001585262294/001579204272/001585262294
 Attempting to load kernel module: /commands/write.cmd
 Checking dependencies.
 Loading sections.
@@ -287,5 +287,3 @@ Finished loading module write
 [*]bgd_block_span = 1
 [x] Path / already mounted, unmount before trying to mount something else.
 [*] Mounted ext2[/dev/hda0] to /: 0x01239570
-[*] Path canonicalized is /
-[x] Tried to read an invalid block. Asked for 1 (0-indexed), but inode only has 1!

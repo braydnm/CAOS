@@ -2,7 +2,7 @@
 #ifndef OS_ATA_H
 #define OS_ATA_H
 
-#include "../kernel/kernel.h"
+#include <kernel.h>
 
 #define ATA_SR_BSY     0x80
 #define ATA_SR_DRDY    0x40

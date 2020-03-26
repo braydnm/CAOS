@@ -1,4 +1,4 @@
-#include "../kernel.h"
+#include <kernel.h>
 
 #define INDEX_BIT(x) (x / 32)
 #define OFFSET_BIT(x) (x % 32)

@@ -1,4 +1,4 @@
-#include "../kernel/kernel.h"
+#include <kernel.h>
 
 static void echo(list_t* args){
     kprintf("%s\n", list_get(args, 1)->value);
