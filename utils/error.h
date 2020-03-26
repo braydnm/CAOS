@@ -4,7 +4,7 @@
 
 #ifndef OS_ERROR_H
 #define OS_ERROR_H
-int errno;			/* global error number */
+extern int errno;			/* global error number */
 #define	EPERM		1		/* Operation not permitted */
 #define	ENOENT		2		/* No such file or directory */
 #define	ESRCH		3		/* No such process */

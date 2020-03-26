@@ -3,7 +3,7 @@
 
 #include "../../kernel/kernel.h"
 
-int colors;
+extern int colors;
 
 extern unsigned char* screenBuffer;
 void clearScreen();

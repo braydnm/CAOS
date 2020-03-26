@@ -13,6 +13,7 @@ extern char kernel_symbols_end[];
 
 void* module_direct_load(void* blob, size_t size){
     Elf32_Header * target = (Elf32_Header *)blob;
+    serialLog("File Base: 0x%x\n", target);
 
     if (target->e_ident[0] != ELFMAG0 ||
         target->e_ident[1] != ELFMAG1 ||
@@ -122,6 +123,7 @@ void* module_direct_load(void* blob, size_t size){
                     if (s) {
                         uintptr_t final = s->sh_addr + table->st_value;
                         hashmap_set(symboltable, name, (void *)final);
+                        serialLog("point %s to 0x%x\n", name, (uintptr_t)final);
                         hashmap_set(local_symbols, name, (void *)final);
                     } else {
                         serialLog("Not resolving %s\n", name);
@@ -152,6 +154,7 @@ void* module_direct_load(void* blob, size_t size){
                 }
                 if (s) {
                     uintptr_t final = s->sh_addr + table->st_value;
+                    serialLog("[****] Found %s at 0x%x\n", name, (uintptr_t)final);
                     hashmap_set(local_symbols, name, (void *)final);
                 }
             }
@@ -193,13 +196,14 @@ void* module_direct_load(void* blob, size_t size){
                     place  = (uintptr_t)ptr;
                     if (!hashmap_get(symboltable, name)) {
                         if (!hashmap_get(local_symbols, name)) {
-                            serialLog("Wat? Missing symbol %s\n", name);
-                            serialLog("Here's all the symbols:\n");
+                            serialLog("[!!!!!!!!!!!!!!!] Wat? Missing symbol %s\n", name);
+                            serialLog("[!!!!!!!!!!!!!!!] Here's all the symbols:\n");
                         } else {
                             symbol = (uintptr_t)hashmap_get(local_symbols, name);
                         }
                     } else {
                         symbol = (uintptr_t)hashmap_get(symboltable, name);
+                        serialLog("!!!! Relocating %s - 0x%x", name, symbol);
                     }
                 }
                 switch (ELF32_R_TYPE(table->r_info)) {
@@ -225,10 +229,10 @@ void* module_direct_load(void* blob, size_t size){
     foreach(_key, hash_keys) {
         char * key = (char *)_key->value;
         if (startswith(key, "module_info_")) {
+            serialLog("******************** Found module info\n");
             mod_info = hashmap_get(local_symbols, key);
         }
     }
-
     list_free(hash_keys);
     free(hash_keys);
     if (!mod_info) {
@@ -236,6 +240,9 @@ void* module_direct_load(void* blob, size_t size){
         goto mod_load_error;
     }
 
+    serialLog("Name: %s\n", mod_info->name);
+    serialLog("Mod Initialize function: 0x%x\n", mod_info->initialize);
+    serialLog("Mod Offset: 0x%x\n", ((uintptr_t)mod_info->initialize));
     if (mod_info->initialize!=null)
         mod_info->initialize();
 

@@ -1,64 +1,10 @@
 .section .symbols
 
-.extern IRQ_END
-.type IRQ_END, @function
-
-.extern IRQ_START
-.type IRQ_START, @function
-
-.extern __assert_func
-.type __assert_func, @function
-
-.extern __enabled
-.type __enabled, @function
-
-.extern __kmalloc
-.type __kmalloc, @function
-
-.extern __print_used_mem
-.type __print_used_mem, @function
-
-.extern __x86.get_pc_thunk.ax
-.type __x86.get_pc_thunk.ax, @function
-
-.extern __x86.get_pc_thunk.bx
-.type __x86.get_pc_thunk.bx, @function
-
-.extern __x86.get_pc_thunk.cx
-.type __x86.get_pc_thunk.cx, @function
-
-.extern __x86.get_pc_thunk.dx
-.type __x86.get_pc_thunk.dx, @function
-
-.extern _itoa
-.type _itoa, @function
-
-.extern _kprint
-.type _kprint, @function
-
-.extern _kprintf
-.type _kprintf, @function
-
-.extern _pci_devices
-.type _pci_devices, @function
-
-.extern _pci_vendors
-.type _pci_vendors, @function
-
-.extern _timer_drift
-.type _timer_drift, @function
-
 .extern addInputHandler
 .type addInputHandler, @function
 
 .extern addInterruptHandler
 .type addInterruptHandler, @function
-
-.extern alloc_dma_frame
-.type alloc_dma_frame, @function
-
-.extern alloc_frame
-.type alloc_frame, @function
 
 .extern allocate_block
 .type allocate_block, @function
@@ -69,11 +15,23 @@
 .extern allocate_inode_block
 .type allocate_inode_block, @function
 
+.extern alloc_frame
+.type alloc_frame, @function
+
 .extern appendChar
 .type appendChar, @function
 
 .extern appendStr
 .type appendStr, @function
+
+.extern __assert_func
+.type __assert_func, @function
+
+.extern ata_finalize
+.type ata_finalize, @function
+
+.extern ata_init
+.type ata_init, @function
 
 .extern atoi
 .type atoi, @function
@@ -114,11 +72,11 @@
 .extern chown_fs
 .type chown_fs, @function
 
-.extern clearScreen
-.type clearScreen, @function
-
 .extern clear_frame
 .type clear_frame, @function
+
+.extern clearScreen
+.type clearScreen, @function
 
 .extern clone_fs
 .type clone_fs, @function
@@ -189,8 +147,17 @@
 .extern do_multiboot
 .type do_multiboot, @function
 
+.extern dospart_finialize
+.type dospart_finialize, @function
+
+.extern dospart_init
+.type dospart_init, @function
+
 .extern dump_multiboot
 .type dump_multiboot, @function
+
+.extern __enabled
+.type __enabled, @function
 
 .extern endswith
 .type endswith, @function
@@ -345,6 +312,9 @@
 .extern gdt
 .type gdt, @function
 
+.extern gdt_flush
+.type gdt_flush, @function
+
 .extern gdtInstall
 .type gdtInstall, @function
 
@@ -354,11 +324,17 @@
 .extern gdtSetGate
 .type gdtSetGate, @function
 
-.extern gdt_flush
-.type gdt_flush, @function
+.extern get_block_number
+.type get_block_number, @function
+
+.extern get_cache_time
+.type get_cache_time, @function
 
 .extern getCursorLocation
 .type getCursorLocation, @function
+
+.extern get_date
+.type get_date, @function
 
 .extern getLocation
 .type getLocation, @function
@@ -368,15 +344,6 @@
 
 .extern getLocationRow
 .type getLocationRow, @function
-
-.extern get_block_number
-.type get_block_number, @function
-
-.extern get_cache_time
-.type get_cache_time, @function
-
-.extern get_date
-.type get_date, @function
 
 .extern get_mount_point
 .type get_mount_point, @function
@@ -471,6 +438,9 @@
 .extern init
 .type init, @function
 
+.extern initial_esp
+.type initial_esp, @function
+
 .extern initInterruptHandling
 .type initInterruptHandling, @function
 
@@ -479,9 +449,6 @@
 
 .extern init_paging
 .type init_paging, @function
-
-.extern initial_esp
-.type initial_esp, @function
 
 .extern inode_read_block
 .type inode_read_block, @function
@@ -515,6 +482,9 @@
 
 .extern interruptHandlers
 .type interruptHandlers, @function
+
+.extern interrupts
+.type interrupts, @function
 
 .extern interruptServiceRoutine0
 .type interruptServiceRoutine0, @function
@@ -567,23 +537,26 @@
 .extern interruptServiceRoutineHandler
 .type interruptServiceRoutineHandler, @function
 
-.extern interrupts
-.type interrupts, @function
-
 .extern intro
 .type intro, @function
 
 .extern ioctl_fs
 .type ioctl_fs, @function
 
+.extern IRQ_END
+.type IRQ_END, @function
+
+.extern IRQ_START
+.type IRQ_START, @function
+
 .extern is_update_in_progress
 .type is_update_in_progress, @function
 
+.extern _itoa
+.type _itoa, @function
+
 .extern itoa
 .type itoa, @function
-
-.extern kernelSize
-.type kernelSize, @function
 
 .extern kernel_base
 .type kernel_base, @function
@@ -594,6 +567,9 @@
 .extern kernel_end
 .type kernel_end, @function
 
+.extern kernelSize
+.type kernelSize, @function
+
 .extern kernel_symbols_end
 .type kernel_symbols_end, @function
 
@@ -602,6 +578,9 @@
 
 .extern kmain
 .type kmain, @function
+
+.extern __kmalloc
+.type __kmalloc, @function
 
 .extern kmalloc
 .type kmalloc, @function
@@ -615,20 +594,26 @@
 .extern kopen_recur
 .type kopen_recur, @function
 
+.extern _kprint
+.type _kprint, @function
+
 .extern kprint
 .type kprint, @function
 
 .extern kprintCentered
 .type kprintCentered, @function
 
-.extern kprintPos
-.type kprintPos, @function
+.extern _kprintf
+.type _kprintf, @function
 
 .extern kprintf
 .type kprintf, @function
 
 .extern kprintfCentered
 .type kprintfCentered, @function
+
+.extern kprintPos
+.type kprintPos, @function
 
 .extern kvmalloc
 .type kvmalloc, @function
@@ -696,6 +681,9 @@
 .extern list_remove
 .type list_remove, @function
 
+.extern make_dma_frame
+.type make_dma_frame, @function
+
 .extern make_pipe
 .type make_pipe, @function
 
@@ -711,12 +699,6 @@
 .extern mboot_ptr
 .type mboot_ptr, @function
 
-.extern mem_total
-.type mem_total, @function
-
-.extern mem_used
-.type mem_used, @function
-
 .extern memcpy
 .type memcpy, @function
 
@@ -725,6 +707,12 @@
 
 .extern memset
 .type memset, @function
+
+.extern mem_total
+.type mem_total, @function
+
+.extern mem_used
+.type mem_used, @function
 
 .extern messageLength
 .type messageLength, @function
@@ -789,6 +777,9 @@
 .extern pci_device_lookup
 .type pci_device_lookup, @function
 
+.extern _pci_devices
+.type _pci_devices, @function
+
 .extern pci_find_type
 .type pci_find_type, @function
 
@@ -819,14 +810,14 @@
 .extern pci_vendor_lookup
 .type pci_vendor_lookup, @function
 
+.extern _pci_vendors
+.type _pci_vendors, @function
+
 .extern pci_write_field
 .type pci_write_field, @function
 
 .extern pic_send_eoi
 .type pic_send_eoi, @function
-
-.extern pip_unsize
-.type pip_unsize, @function
 
 .extern pipe_available
 .type pipe_available, @function
@@ -852,6 +843,9 @@
 .extern pipe_unread
 .type pipe_unread, @function
 
+.extern pip_unsize
+.type pip_unsize, @function
+
 .extern plp
 .type plp, @function
 
@@ -860,6 +854,9 @@
 
 .extern printChar
 .type printChar, @function
+
+.extern __print_used_mem
+.type __print_used_mem, @function
 
 .extern prompt
 .type prompt, @function
@@ -879,6 +876,12 @@
 .extern read_cmos
 .type read_cmos, @function
 
+.extern readdir_ext2
+.type readdir_ext2, @function
+
+.extern readdir_fs
+.type readdir_fs, @function
+
 .extern read_eip
 .type read_eip, @function
 
@@ -891,20 +894,14 @@
 .extern read_inode
 .type read_inode, @function
 
-.extern read_pipe
-.type read_pipe, @function
-
-.extern readdir_ext2
-.type readdir_ext2, @function
-
-.extern readdir_fs
-.type readdir_fs, @function
-
 .extern readlink_ext2
 .type readlink_ext2, @function
 
 .extern readlink_fs
 .type readlink_fs, @function
+
+.extern read_pipe
+.type read_pipe, @function
 
 .extern realloc
 .type realloc, @function
@@ -951,14 +948,14 @@
 .extern selectwait_fs
 .type selectwait_fs, @function
 
-.extern serialLog
-.type serialLog, @function
-
 .extern serial_enable
 .type serial_enable, @function
 
 .extern serial_install
 .type serial_install, @function
+
+.extern serialLog
+.type serialLog, @function
 
 .extern serial_rcvd
 .type serial_rcvd, @function
@@ -981,11 +978,17 @@
 .extern setBackground
 .type setBackground, @function
 
+.extern set_block_number
+.type set_block_number, @function
+
 .extern setColor
 .type setColor, @function
 
 .extern setCursorLocation
 .type setCursorLocation, @function
+
+.extern set_frame
+.type set_frame, @function
 
 .extern setInterrupt
 .type setInterrupt, @function
@@ -996,17 +999,11 @@
 .extern setKernelStack
 .type setKernelStack, @function
 
-.extern setText
-.type setText, @function
-
-.extern set_block_number
-.type set_block_number, @function
-
-.extern set_frame
-.type set_frame, @function
-
 .extern set_nframes
 .type set_nframes, @function
+
+.extern setText
+.type setText, @function
 
 .extern setup_modules
 .type setup_modules, @function
@@ -1088,6 +1085,9 @@
 
 .extern test_frame
 .type test_frame, @function
+
+.extern _timer_drift
+.type _timer_drift, @function
 
 .extern timer_drift
 .type timer_drift, @function
@@ -1218,65 +1218,11 @@
 .global kernel_symbols_start
 kernel_symbols_start:
 
-.long IRQ_END
-.asciz "IRQ_END"
-
-.long IRQ_START
-.asciz "IRQ_START"
-
-.long __assert_func
-.asciz "__assert_func"
-
-.long __enabled
-.asciz "__enabled"
-
-.long __kmalloc
-.asciz "__kmalloc"
-
-.long __print_used_mem
-.asciz "__print_used_mem"
-
-.long __x86.get_pc_thunk.ax
-.asciz "__x86.get_pc_thunk.ax"
-
-.long __x86.get_pc_thunk.bx
-.asciz "__x86.get_pc_thunk.bx"
-
-.long __x86.get_pc_thunk.cx
-.asciz "__x86.get_pc_thunk.cx"
-
-.long __x86.get_pc_thunk.dx
-.asciz "__x86.get_pc_thunk.dx"
-
-.long _itoa
-.asciz "_itoa"
-
-.long _kprint
-.asciz "_kprint"
-
-.long _kprintf
-.asciz "_kprintf"
-
-.long _pci_devices
-.asciz "_pci_devices"
-
-.long _pci_vendors
-.asciz "_pci_vendors"
-
-.long _timer_drift
-.asciz "_timer_drift"
-
 .long addInputHandler
 .asciz "addInputHandler"
 
 .long addInterruptHandler
 .asciz "addInterruptHandler"
-
-.long alloc_dma_frame
-.asciz "alloc_dma_frame"
-
-.long alloc_frame
-.asciz "alloc_frame"
 
 .long allocate_block
 .asciz "allocate_block"
@@ -1287,11 +1233,23 @@ kernel_symbols_start:
 .long allocate_inode_block
 .asciz "allocate_inode_block"
 
+.long alloc_frame
+.asciz "alloc_frame"
+
 .long appendChar
 .asciz "appendChar"
 
 .long appendStr
 .asciz "appendStr"
+
+.long __assert_func
+.asciz "__assert_func"
+
+.long ata_finalize
+.asciz "ata_finalize"
+
+.long ata_init
+.asciz "ata_init"
 
 .long atoi
 .asciz "atoi"
@@ -1332,11 +1290,11 @@ kernel_symbols_start:
 .long chown_fs
 .asciz "chown_fs"
 
-.long clearScreen
-.asciz "clearScreen"
-
 .long clear_frame
 .asciz "clear_frame"
+
+.long clearScreen
+.asciz "clearScreen"
 
 .long clone_fs
 .asciz "clone_fs"
@@ -1407,8 +1365,17 @@ kernel_symbols_start:
 .long do_multiboot
 .asciz "do_multiboot"
 
+.long dospart_finialize
+.asciz "dospart_finialize"
+
+.long dospart_init
+.asciz "dospart_init"
+
 .long dump_multiboot
 .asciz "dump_multiboot"
+
+.long __enabled
+.asciz "__enabled"
 
 .long endswith
 .asciz "endswith"
@@ -1563,6 +1530,9 @@ kernel_symbols_start:
 .long gdt
 .asciz "gdt"
 
+.long gdt_flush
+.asciz "gdt_flush"
+
 .long gdtInstall
 .asciz "gdtInstall"
 
@@ -1572,11 +1542,17 @@ kernel_symbols_start:
 .long gdtSetGate
 .asciz "gdtSetGate"
 
-.long gdt_flush
-.asciz "gdt_flush"
+.long get_block_number
+.asciz "get_block_number"
+
+.long get_cache_time
+.asciz "get_cache_time"
 
 .long getCursorLocation
 .asciz "getCursorLocation"
+
+.long get_date
+.asciz "get_date"
 
 .long getLocation
 .asciz "getLocation"
@@ -1586,15 +1562,6 @@ kernel_symbols_start:
 
 .long getLocationRow
 .asciz "getLocationRow"
-
-.long get_block_number
-.asciz "get_block_number"
-
-.long get_cache_time
-.asciz "get_cache_time"
-
-.long get_date
-.asciz "get_date"
 
 .long get_mount_point
 .asciz "get_mount_point"
@@ -1689,6 +1656,9 @@ kernel_symbols_start:
 .long init
 .asciz "init"
 
+.long initial_esp
+.asciz "initial_esp"
+
 .long initInterruptHandling
 .asciz "initInterruptHandling"
 
@@ -1697,9 +1667,6 @@ kernel_symbols_start:
 
 .long init_paging
 .asciz "init_paging"
-
-.long initial_esp
-.asciz "initial_esp"
 
 .long inode_read_block
 .asciz "inode_read_block"
@@ -1733,6 +1700,9 @@ kernel_symbols_start:
 
 .long interruptHandlers
 .asciz "interruptHandlers"
+
+.long interrupts
+.asciz "interrupts"
 
 .long interruptServiceRoutine0
 .asciz "interruptServiceRoutine0"
@@ -1785,23 +1755,26 @@ kernel_symbols_start:
 .long interruptServiceRoutineHandler
 .asciz "interruptServiceRoutineHandler"
 
-.long interrupts
-.asciz "interrupts"
-
 .long intro
 .asciz "intro"
 
 .long ioctl_fs
 .asciz "ioctl_fs"
 
+.long IRQ_END
+.asciz "IRQ_END"
+
+.long IRQ_START
+.asciz "IRQ_START"
+
 .long is_update_in_progress
 .asciz "is_update_in_progress"
 
+.long _itoa
+.asciz "_itoa"
+
 .long itoa
 .asciz "itoa"
-
-.long kernelSize
-.asciz "kernelSize"
 
 .long kernel_base
 .asciz "kernel_base"
@@ -1812,6 +1785,9 @@ kernel_symbols_start:
 .long kernel_end
 .asciz "kernel_end"
 
+.long kernelSize
+.asciz "kernelSize"
+
 .long kernel_symbols_end
 .asciz "kernel_symbols_end"
 
@@ -1820,6 +1796,9 @@ kernel_symbols_start:
 
 .long kmain
 .asciz "kmain"
+
+.long __kmalloc
+.asciz "__kmalloc"
 
 .long kmalloc
 .asciz "kmalloc"
@@ -1833,20 +1812,26 @@ kernel_symbols_start:
 .long kopen_recur
 .asciz "kopen_recur"
 
+.long _kprint
+.asciz "_kprint"
+
 .long kprint
 .asciz "kprint"
 
 .long kprintCentered
 .asciz "kprintCentered"
 
-.long kprintPos
-.asciz "kprintPos"
+.long _kprintf
+.asciz "_kprintf"
 
 .long kprintf
 .asciz "kprintf"
 
 .long kprintfCentered
 .asciz "kprintfCentered"
+
+.long kprintPos
+.asciz "kprintPos"
 
 .long kvmalloc
 .asciz "kvmalloc"
@@ -1914,6 +1899,9 @@ kernel_symbols_start:
 .long list_remove
 .asciz "list_remove"
 
+.long make_dma_frame
+.asciz "make_dma_frame"
+
 .long make_pipe
 .asciz "make_pipe"
 
@@ -1929,12 +1917,6 @@ kernel_symbols_start:
 .long mboot_ptr
 .asciz "mboot_ptr"
 
-.long mem_total
-.asciz "mem_total"
-
-.long mem_used
-.asciz "mem_used"
-
 .long memcpy
 .asciz "memcpy"
 
@@ -1943,6 +1925,12 @@ kernel_symbols_start:
 
 .long memset
 .asciz "memset"
+
+.long mem_total
+.asciz "mem_total"
+
+.long mem_used
+.asciz "mem_used"
 
 .long messageLength
 .asciz "messageLength"
@@ -2007,6 +1995,9 @@ kernel_symbols_start:
 .long pci_device_lookup
 .asciz "pci_device_lookup"
 
+.long _pci_devices
+.asciz "_pci_devices"
+
 .long pci_find_type
 .asciz "pci_find_type"
 
@@ -2037,14 +2028,14 @@ kernel_symbols_start:
 .long pci_vendor_lookup
 .asciz "pci_vendor_lookup"
 
+.long _pci_vendors
+.asciz "_pci_vendors"
+
 .long pci_write_field
 .asciz "pci_write_field"
 
 .long pic_send_eoi
 .asciz "pic_send_eoi"
-
-.long pip_unsize
-.asciz "pip_unsize"
 
 .long pipe_available
 .asciz "pipe_available"
@@ -2070,6 +2061,9 @@ kernel_symbols_start:
 .long pipe_unread
 .asciz "pipe_unread"
 
+.long pip_unsize
+.asciz "pip_unsize"
+
 .long plp
 .asciz "plp"
 
@@ -2078,6 +2072,9 @@ kernel_symbols_start:
 
 .long printChar
 .asciz "printChar"
+
+.long __print_used_mem
+.asciz "__print_used_mem"
 
 .long prompt
 .asciz "prompt"
@@ -2097,6 +2094,12 @@ kernel_symbols_start:
 .long read_cmos
 .asciz "read_cmos"
 
+.long readdir_ext2
+.asciz "readdir_ext2"
+
+.long readdir_fs
+.asciz "readdir_fs"
+
 .long read_eip
 .asciz "read_eip"
 
@@ -2109,20 +2112,14 @@ kernel_symbols_start:
 .long read_inode
 .asciz "read_inode"
 
-.long read_pipe
-.asciz "read_pipe"
-
-.long readdir_ext2
-.asciz "readdir_ext2"
-
-.long readdir_fs
-.asciz "readdir_fs"
-
 .long readlink_ext2
 .asciz "readlink_ext2"
 
 .long readlink_fs
 .asciz "readlink_fs"
+
+.long read_pipe
+.asciz "read_pipe"
 
 .long realloc
 .asciz "realloc"
@@ -2169,14 +2166,14 @@ kernel_symbols_start:
 .long selectwait_fs
 .asciz "selectwait_fs"
 
-.long serialLog
-.asciz "serialLog"
-
 .long serial_enable
 .asciz "serial_enable"
 
 .long serial_install
 .asciz "serial_install"
+
+.long serialLog
+.asciz "serialLog"
 
 .long serial_rcvd
 .asciz "serial_rcvd"
@@ -2199,11 +2196,17 @@ kernel_symbols_start:
 .long setBackground
 .asciz "setBackground"
 
+.long set_block_number
+.asciz "set_block_number"
+
 .long setColor
 .asciz "setColor"
 
 .long setCursorLocation
 .asciz "setCursorLocation"
+
+.long set_frame
+.asciz "set_frame"
 
 .long setInterrupt
 .asciz "setInterrupt"
@@ -2214,17 +2217,11 @@ kernel_symbols_start:
 .long setKernelStack
 .asciz "setKernelStack"
 
-.long setText
-.asciz "setText"
-
-.long set_block_number
-.asciz "set_block_number"
-
-.long set_frame
-.asciz "set_frame"
-
 .long set_nframes
 .asciz "set_nframes"
+
+.long setText
+.asciz "setText"
 
 .long setup_modules
 .asciz "setup_modules"
@@ -2306,6 +2303,9 @@ kernel_symbols_start:
 
 .long test_frame
 .asciz "test_frame"
+
+.long _timer_drift
+.asciz "_timer_drift"
 
 .long timer_drift
 .asciz "timer_drift"

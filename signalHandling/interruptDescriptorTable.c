@@ -3,6 +3,9 @@
 //
 #include "../kernel/kernel.h"
 
+interruptRegister reg;
+interruptSignal interrupts[NUM_INTERRUPT_ENTRIES];
+
 void setInterruptGate(int n, uint32_t handler){
     interrupts[n].lowOffset = low_offset(handler);
     interrupts[n].kernelSegmentSelector = KERNEL_SEGMENT;

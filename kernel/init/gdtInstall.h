@@ -3,7 +3,7 @@
 #define OS_GDTINSTALL_H
 
 
-#include "../kernel.h"
+#include "../../utils/types.h"
 
 extern void gdt_flush();
 extern void tss_flush();
@@ -55,8 +55,8 @@ struct gdt_ptr {
     unsigned int base;
 } __attribute__((packed));
 
-struct gdt_entry gdt[6];
-struct gdt_ptr gdtPtr;
+extern struct gdt_entry gdt[6];
+extern struct gdt_ptr gdtPtr;
 
 void gdtSetGate(int num, unsigned long base, unsigned long limit, unsigned char access, unsigned char granularity);
 void gdtInstall();

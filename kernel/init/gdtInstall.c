@@ -2,6 +2,9 @@
 
 tss_entry_t tssEntry;
 
+struct gdt_entry gdt[6];
+struct gdt_ptr gdtPtr;
+
 static void writeTSS(int32_t num, uint16_t ss0, uint32_t esp0){
     uintptr_t base = (uintptr_t)&tssEntry;
     uintptr_t limit = base+ sizeof(tssEntry);

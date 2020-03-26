@@ -12,7 +12,7 @@ typedef struct{
     inputHandlerFunction func;
     char* description;
 } terminalFunc;
-hashmap_t* inputHandlers;
+extern hashmap_t* inputHandlers;
 
 void addInputHandler(char *name, inputHandlerFunction func, char* description);
 void inputHandlerInit();

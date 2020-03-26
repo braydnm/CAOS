@@ -4,6 +4,7 @@
 unsigned char* screenBuffer = (unsigned char*)(VIDEO_ADDRESS);
 int colors = 0x0f;
 int charsOnLine = 0;
+int colors;
 
 // declarators to avoid pointless info messages and mislinking when compiling
 int printChar(char c, int row, int col);

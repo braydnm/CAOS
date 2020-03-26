@@ -5,6 +5,7 @@
 #include "../kernel/kernel.h"
 #include "inputHandler.h"
 
+hashmap_t* inputHandlers;
 bool init = 0;
 
 void inputHandlerInit(){

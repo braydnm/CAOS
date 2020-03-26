@@ -13,9 +13,6 @@
 #endif
 
 EXTERN_C
-#ifndef NULL
-    #define NULL 0
-#endif
 
 #define handlerDecleration(functionName) void functionName(list_t*)
 
@@ -28,6 +25,8 @@ EXTERN_C
 #include "../drivers/devices/keyboard.h"
 #include "../drivers/devices/cmos.h"
 #include "../drivers/devices/serial.h"
+#include "../drivers/ata.h"
+#include "../drivers/dospart.h"
 #include "../drivers/pci.h"
 #include "../drivers/ports.h"
 #include "../drivers/screen/screen.h"
@@ -61,10 +60,10 @@ EXTERN_C
 #include "../utils/tree.h"
 #include "../utils/wordsize.h"
 
-char* cwd;
+extern char* cwd;
 
-uint32_t kernelSize;
-struct multiboot* bootInfo;
+extern uint32_t kernelSize;
+extern struct multiboot* bootInfo;
 
 extern unsigned long timer_ticks;
 extern unsigned long timer_subticks;

@@ -5,7 +5,7 @@
 #ifndef OS_MULTIBOOT_H
 #define OS_MULTIBOOT_H
 
-#include "../kernel/kernel.h"
+#include "types.h"
 
 #define MULTIBOOT_MAGIC        0x1BADB002
 #define MULTIBOOT_EAX_MAGIC    0x2BADB002
@@ -92,7 +92,7 @@ typedef struct {
 struct multiboot *copy_multiboot(struct multiboot *mboot_ptr);
 void dump_multiboot(struct multiboot *mboot_ptr);
 void do_multiboot(struct multiboot* mboot);
-char * ramdisk;
-struct multiboot * mboot_ptr;
+extern char * ramdisk;
+extern struct multiboot * mboot_ptr;
 
 #endif //OS_MULTIBOOT_H

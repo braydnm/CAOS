@@ -32,8 +32,8 @@ typedef struct {
 } __attribute__((packed)) interruptRegister;
 
 #define NUM_INTERRUPT_ENTRIES 256
-interruptSignal interrupts[NUM_INTERRUPT_ENTRIES];
-interruptRegister reg;
+extern interruptSignal interrupts[NUM_INTERRUPT_ENTRIES];
+extern interruptRegister reg;
 
 void setInterruptGate(int i, uint32_t handler);
 void setInterrupt();

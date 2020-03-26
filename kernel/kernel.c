@@ -10,6 +10,12 @@ fs_node_t * ramdisk_mount(uintptr_t, size_t);
 char* prompt = "\n>";
 char* intro = "\n+-+-+-+-+-+-+-+-+-+\n|C|A|O|S|\n+-+-+-+-+-+-+-+-+-+\n";
 
+char* cwd;
+uint32_t kernelSize;
+struct multiboot* bootInfo;
+
+int errno;
+
 mboot_mod_t* setup_modules(struct multiboot* mboot){
     mboot_mod_t * mboot_mods = NULL;
     uintptr_t last_mod = (uintptr_t)&kernel_end;
@@ -48,16 +54,18 @@ mboot_mod_t* setup_modules(struct multiboot* mboot){
 void install_modules(char* path, char* ending){
     fs_node_t* modsFolder = kopen(path, 0);
 
-    if (!modsFolder->flags&FS_DIRECTORY)
+    if (!(modsFolder->flags&FS_DIRECTORY))
         goto error_loading;
 
     int index = 0;
     struct dirent* ent;
 
     while ((ent = readdir_fs(modsFolder, index++))){
+        kprintf("[*] Found %s\n", ent->name);
         if (endswith(ent->name, ending)){
             char* fileName = kmalloc(strlen(path)+2+strlen(ent->name)+1);
-            snprintf(fileName, "/%s/%s",path, ent->name);
+            snprintf(fileName, "%s/%s",path, ent->name);
+            kprintf("[*] Loading %s\n", fileName);
             module_load(fileName);
         }
     }
@@ -92,12 +100,19 @@ void kmain(struct multiboot *mboot, uint32_t mboot_mag, uintptr_t esp){
     ext2_initialize();
     kprintf("[*] Mounting root\n");
     ramdisk_mount(mboot_mods[0].mod_start, mboot_mods[0].mod_end-mboot_mods[0].mod_start);
+    kprintf("[*] Mounted root\n");
     map_vfs_directory("/dev");
+    // kprintf("[*] Mapped VFS directory\n");
     vfs_mount_type("ext2", "/dev/ram0", "/");
     setBackground(BLUE);
-    install_modules("/modules", ".ko");
     install_modules("/commands", ".cmd");
-    vfs_mount_type("ext2", "/dev/hda0", "/");
+    // kprintf("[*] Installed commands\n");
+    ata_init();
+    // serialLog("Installed ATA\n");
+    // dospart_init();
+    // serialLog("Installed dospart\n");
+    // vfs_mount_type("ext2", "/dev/hda0", "/");
+    // kprintf("[*] Mounted type\n");
     clearScreen();
     kprintfCentered("%s", intro);
     kprintf("\n%s", prompt);
