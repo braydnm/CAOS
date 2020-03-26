@@ -1,0 +1,306 @@
+[*] There is 1 module starting at 0x0001009c.
+[*] Current kernel heap start point would be 0x0011b31c.
+[*] Module 0 is at 0x0014e000:0x00242240
+[*] Moving kernel heap start to 0x00242240
+[*] Mounting ramdisk at /dev/ram0
+[*] Searching for dev
+[x] Did not find dev, making it.
+[*] Searching for ram0
+[x] Did not find ram0, making it.
+[*] Searching for dev
+[*] Path canonicalized is /dev/ram0
+[*] Path: , Depth: 0
+[*] Got mount point
+[*]Reading superblock...
+[*]bs=1024, cache entries=10240
+[*]Log block size = 0 -> 1024
+[*]bgd_block_span = 1
+[*] Mounted ext2[/dev/ram0] to /: 0x00802bb0
+[*] Path canonicalized is /modules
+[*] Path: , Depth: 0
+[*] Got mount point
+[*]... Searching for modules
+[*]file a/m/c times are 001541359088/001541359087/001541359087
+[*] Path canonicalized is /modules/ata.ko
+[*] Path: , Depth: 0
+[*] Got mount point
+[*]... Searching for modules
+[*]file a/m/c times are 001541359088/001541359087/001541359087
+[*]... Searching for ata.ko
+[*]file a/m/c times are 001540835990/001542903447/001542903447
+Attempting to load kernel module: //modules/ata.ko
+Checking dependencies.
+Loading sections.
+Not resolving bootInfo
+Not resolving kernelSize
+Not resolving cwd
+Not resolving mboot_ptr
+Not resolving ramdisk
+Not resolving inputHandlers
+Not resolving errno
+Not resolving reg
+Not resolving interrupts
+Not resolving colors
+Not resolving gdtPtr
+Not resolving gdt
+Locating module information...
+[*] Searching for dev
+[*] Searching for hda
+[x] Did not find hda, making it.
+Device status: 88
+[*] Enabling bus mastering...
+[x] Detected ATAPI device at io-base 0x170, control 0x376, slave 0
+[*] Ata device: QEMU DVD-ROM                            
+[!] ATAPI error; no medium?
+Finished loading module ata
+[*] Node refcount [ata.ko] is now 0: 0
+[*] Path canonicalized is /modules/dospart.ko
+[*] Path: , Depth: 0
+[*] Got mount point
+[*]... Searching for modules
+[*]file a/m/c times are 001541359088/001541359087/001541359087
+[*]... Searching for dospart.ko
+[*]file a/m/c times are 001540835990/001542903447/001542903447
+Attempting to load kernel module: //modules/dospart.ko
+Checking dependencies.
+Loading sections.
+Not resolving bootInfo
+Not resolving kernelSize
+Not resolving cwd
+Not resolving mboot_ptr
+Not resolving ramdisk
+Not resolving inputHandlers
+Not resolving errno
+Not resolving reg
+Not resolving interrupts
+Not resolving colors
+Not resolving gdtPtr
+Not resolving gdt
+Locating module information...
+[*] Path canonicalized is /dev/hda
+[*] Path: , Depth: 0
+[*] Got mount point
+[*] Found partition
+[*] Partition #1: @2048+129024
+[*] Searching for dev
+[*] Searching for hda0
+[x] Did not find hda0, making it.
+[*] Partition #2: inactive
+[*] Partition #3: inactive
+[*] Partition #4: inactive
+[*] Path canonicalized is /dev/hdb
+[*] Path: , Depth: 0
+[*] Got mount point
+[*]... Searching for hdb
+[x] Node passed to finddir_fs isn't a directory!
+[x] node = 0x0080aaa0, name = hdb
+Finished loading module partition
+[*] Node refcount [dospart.ko] is now 0: 0
+[x] Tried to read an invalid block. Asked for 1 (0-indexed), but inode only has 1!
+[*] Path canonicalized is /commands
+[*] Path: , Depth: 0
+[*] Got mount point
+[*]... Searching for commands
+[*]file a/m/c times are 001541359099/001541368628/001541368628
+[*] Path canonicalized is /commands/echo.cmd
+[*] Path: , Depth: 0
+[*] Got mount point
+[*]... Searching for commands
+[*]file a/m/c times are 001541359099/001541368628/001541368628
+[*]... Searching for echo.cmd
+[*]file a/m/c times are 001541359315/001542903447/001542903447
+Attempting to load kernel module: //commands/echo.cmd
+Checking dependencies.
+Loading sections.
+Not resolving bootInfo
+Not resolving kernelSize
+Not resolving cwd
+Not resolving mboot_ptr
+Not resolving ramdisk
+Not resolving inputHandlers
+Not resolving errno
+Not resolving reg
+Not resolving interrupts
+Not resolving colors
+Not resolving gdtPtr
+Not resolving gdt
+Locating module information...
+Finished loading module echo
+[*] Node refcount [echo.cmd] is now 0: 0
+[*] Path canonicalized is /commands/help.cmd
+[*] Path: , Depth: 0
+[*] Got mount point
+[*]... Searching for commands
+[*]file a/m/c times are 001541359099/001541368628/001541368628
+[*]... Searching for help.cmd
+[*]file a/m/c times are 001541359531/001542903447/001542903447
+Attempting to load kernel module: //commands/help.cmd
+Checking dependencies.
+Loading sections.
+Not resolving inputHandlers
+Not resolving bootInfo
+Not resolving kernelSize
+Not resolving cwd
+Not resolving mboot_ptr
+Not resolving ramdisk
+Not resolving errno
+Not resolving reg
+Not resolving interrupts
+Not resolving colors
+Not resolving gdtPtr
+Not resolving gdt
+Locating module information...
+Finished loading module help
+[*] Node refcount [help.cmd] is now 0: 0
+[*] Path canonicalized is /commands/clear.cmd
+[*] Path: , Depth: 0
+[*] Got mount point
+[*]... Searching for commands
+[*]file a/m/c times are 001541359099/001541368628/001541368628
+[*]... Searching for clear.cmd
+[*]file a/m/c times are 001541365768/001542903447/001542903447
+Attempting to load kernel module: //commands/clear.cmd
+Checking dependencies.
+Loading sections.
+Not resolving bootInfo
+Not resolving kernelSize
+Not resolving cwd
+Not resolving mboot_ptr
+Not resolving ramdisk
+Not resolving inputHandlers
+Not resolving errno
+Not resolving reg
+Not resolving interrupts
+Not resolving colors
+Not resolving gdtPtr
+Not resolving gdt
+Locating module information...
+Finished loading module clear
+[*] Node refcount [clear.cmd] is now 0: 0
+[*] Path canonicalized is /commands/ls.cmd
+[*] Path: , Depth: 0
+[*] Got mount point
+[*]... Searching for commands
+[*]file a/m/c times are 001541359099/001541368628/001541368628
+[*]... Searching for ls.cmd
+[*]file a/m/c times are 001541366829/001542903447/001542903447
+Attempting to load kernel module: //commands/ls.cmd
+Checking dependencies.
+Loading sections.
+Not resolving cwd
+Not resolving bootInfo
+Not resolving kernelSize
+Not resolving mboot_ptr
+Not resolving ramdisk
+Not resolving inputHandlers
+Not resolving errno
+Not resolving reg
+Not resolving interrupts
+Not resolving colors
+Not resolving gdtPtr
+Not resolving gdt
+Locating module information...
+Finished loading module ls
+[*] Node refcount [ls.cmd] is now 0: 0
+[*] Path canonicalized is /commands/read.cmd
+[*] Path: , Depth: 0
+[*] Got mount point
+[*]... Searching for commands
+[*]file a/m/c times are 001541359099/001541368628/001541368628
+[*]... Searching for read.cmd
+[*]file a/m/c times are 001541366829/001542903447/001542903447
+Attempting to load kernel module: //commands/read.cmd
+Checking dependencies.
+Loading sections.
+Not resolving bootInfo
+Not resolving kernelSize
+Not resolving cwd
+Not resolving mboot_ptr
+Not resolving ramdisk
+Not resolving inputHandlers
+Not resolving errno
+Not resolving reg
+Not resolving interrupts
+Not resolving colors
+Not resolving gdtPtr
+Not resolving gdt
+Locating module information...
+Finished loading module read
+[*] Node refcount [read.cmd] is now 0: 0
+[*] Path canonicalized is /commands/reboot.cmd
+[*] Path: , Depth: 0
+[*] Got mount point
+[*]... Searching for commands
+[*]file a/m/c times are 001541359099/001541368628/001541368628
+[*]... Searching for reboot.cmd
+[*]file a/m/c times are 001541366829/001542903447/001542903447
+Attempting to load kernel module: //commands/reboot.cmd
+Checking dependencies.
+Loading sections.
+Not resolving bootInfo
+Not resolving kernelSize
+Not resolving cwd
+Not resolving mboot_ptr
+Not resolving ramdisk
+Not resolving inputHandlers
+Not resolving errno
+Not resolving reg
+Not resolving interrupts
+Not resolving colors
+Not resolving gdtPtr
+Not resolving gdt
+Locating module information...
+Finished loading module reboot
+[*] Node refcount [reboot.cmd] is now 0: 0
+[*] Path canonicalized is /commands/write.cmd
+[*] Path: , Depth: 0
+[*] Got mount point
+[*]... Searching for commands
+[*]file a/m/c times are 001541359099/001541368628/001541368628
+[*]... Searching for write.cmd
+[*]file a/m/c times are 001541368628/001542903447/001542903447
+Attempting to load kernel module: //commands/write.cmd
+Checking dependencies.
+Loading sections.
+Not resolving bootInfo
+Not resolving kernelSize
+Not resolving cwd
+Not resolving mboot_ptr
+Not resolving ramdisk
+Not resolving inputHandlers
+Not resolving errno
+Not resolving reg
+Not resolving interrupts
+Not resolving colors
+Not resolving gdtPtr
+Not resolving gdt
+Locating module information...
+Finished loading module write
+[*] Node refcount [write.cmd] is now 0: 0
+[x] Tried to read an invalid block. Asked for 1 (0-indexed), but inode only has 1!
+[*] Path canonicalized is /dev/hda0
+[*] Path: , Depth: 0
+[*] Got mount point
+[*]Reading superblock...
+[*]bs=1024, cache entries=10240
+[*]Log block size = 0 -> 1024
+[*]bgd_block_span = 1
+[x] Path / already mounted, unmount before trying to mount something else.
+[*] Mounted ext2[/dev/hda0] to /: 0x01262570
+[*] Path canonicalized is /
+[x] Tried to read an invalid block. Asked for 1 (0-indexed), but inode only has 1!
+[*] Path canonicalized is /test.txt
+[*] Path: , Depth: 0
+[*] Got mount point
+[*]... Searching for test.txt
+[*]file a/m/c times are 1321012800/1321012800/1321012800
+[x] Tried to read an invalid block. Asked for 0 (0-indexed), but inode only has 0!
+[x] Attempting to write beyond the existing allocated blocks for this inode.
+[x] Inode 12, Block 0
+[x] clearing and allocating up to required blocks (block=0, 0)
+[*] Allocating block #0 for inode #12
+[x] allocating block #521 (group 0)
+[*] Setting inode->blocks to 2 = (1 fs blocks)
+[x] ... done
+[x] Writing virtual block 0 for inode 12 maps to real block 521
+[*] Path canonicalized is /
